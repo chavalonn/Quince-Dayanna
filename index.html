@@ -1,0 +1,98 @@
+import React, { useEffect, useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
+import { MapPin, Camera } from "lucide-react";
+
+export default function InvitacionXV() {
+  const targetDate = new Date("2026-08-28T00:00:00");
+  const [timeLeft, setTimeLeft] = useState(getTimeRemaining());
+
+  function getTimeRemaining() {
+    const total = targetDate - new Date();
+    const days = Math.floor(total / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const seconds = Math.floor((total / 1000) % 60);
+    return { total, days, hours, minutes, seconds };
+  }
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(getTimeRemaining());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-pink-50 flex flex-col items-center p-6 space-y-8">
+      <motion.h1
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-4xl md:text-5xl font-bold text-pink-700 text-center"
+      >
+        XV Años de Dayanna Yamileth Velasco González
+      </motion.h1>
+
+      <Card className="w-full max-w-2xl rounded-2xl shadow-lg">
+        <CardContent className="p-6 text-center space-y-4">
+          <h2 className="text-2xl font-semibold text-pink-600">Cuenta regresiva</h2>
+          <div className="grid grid-cols-4 gap-4 text-lg font-medium">
+            <div>
+              <p className="text-3xl">{timeLeft.days}</p>
+              <p>Días</p>
+            </div>
+            <div>
+              <p className="text-3xl">{timeLeft.hours}</p>
+              <p>Horas</p>
+            </div>
+            <div>
+              <p className="text-3xl">{timeLeft.minutes}</p>
+              <p>Min</p>
+            </div>
+            <div>
+              <p className="text-3xl">{timeLeft.seconds}</p>
+              <p>Seg</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="w-full max-w-2xl rounded-2xl shadow-lg">
+        <CardContent className="p-6 space-y-4">
+          <h2 className="text-2xl font-semibold text-pink-600 flex items-center gap-2">
+            <Camera /> Galería de Fotos
+          </h2>
+          <div className="border-2 border-dashed border-pink-300 rounded-2xl p-6 text-center">
+            <p className="text-gray-600">Aquí puedes agregar las fotos después.</p>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="w-full max-w-2xl rounded-2xl shadow-lg">
+        <CardContent className="p-6 space-y-4">
+          <h2 className="text-2xl font-semibold text-pink-600 flex items-center gap-2">
+            <MapPin /> Ubicación del Templo
+          </h2>
+          <div className="border-2 border-dashed border-pink-300 rounded-2xl p-6 text-center">
+            <p className="text-gray-600">Aquí puedes insertar el mapa del templo después.</p>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="w-full max-w-2xl rounded-2xl shadow-lg">
+        <CardContent className="p-6 space-y-4">
+          <h2 className="text-2xl font-semibold text-pink-600 flex items-center gap-2">
+            <MapPin /> Ubicación del Salón de Eventos
+          </h2>
+          <div className="border-2 border-dashed border-pink-300 rounded-2xl p-6 text-center">
+            <p className="text-gray-600">Aquí puedes insertar el mapa del salón después.</p>
+          </div>
+        </CardContent>
+      </Card>
+
+      <p className="text-center text-gray-500 text-sm pb-6">
+        28 de agosto de 2026
+      </p>
+    </div>
+  );
+}
