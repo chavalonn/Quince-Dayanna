@@ -5,44 +5,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>XV Años Dayanna Yamileth</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ffeef5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffeef5, #fff);
       text-align: center;
       padding: 20px;
     }
+
     h1 {
       color: #c2185b;
-      font-size: 2.5em;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin-bottom: 10px;
     }
+
+    h2 {
+      margin-top: 0;
+      color: #ad1457;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+    }
+
     .card {
       background: white;
       border-radius: 20px;
       padding: 20px;
       margin: 20px auto;
-      max-width: 700px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 750px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     }
+
     .countdown {
-      display: flex;
-      justify-content: space-around;
-      font-size: 1.2em;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
     }
+
     .countdown div {
-      font-size: 1.5em;
+      background: #ffe0ef;
+      padding: 15px 10px;
+      border-radius: 15px;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
     }
+
+    .countdown span {
+      display: block;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: bold;
+      color: #c2185b;
+    }
+
     .placeholder {
       border: 2px dashed #f48fb1;
-      padding: 30px;
+      padding: 25px;
       border-radius: 15px;
       color: #777;
+      font-size: 0.95rem;
     }
+
     iframe {
       width: 100%;
       height: 300px;
       border-radius: 15px;
       border: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      margin: 10px 0;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    /* Ajustes específicos para pantallas muy pequeñas */
+    @media (max-width: 400px) {
+      body {
+        padding: 10px;
+      }
+
+      .card {
+        padding: 15px;
+      }
     }
   </style>
 </head>
@@ -53,38 +107,39 @@
   <div class="card">
     <h2>Cuenta regresiva</h2>
     <div class="countdown">
-      <div><span id="days"></span><br>Días</div>
-      <div><span id="hours"></span><br>Horas</div>
-      <div><span id="minutes"></span><br>Min</div>
-      <div><span id="seconds"></span><br>Seg</div>
+      <div><span id="days"></span>Días</div>
+      <div><span id="hours"></span>Horas</div>
+      <div><span id="minutes"></span>Min</div>
+      <div><span id="seconds"></span>Seg</div>
     </div>
   </div>
 
   <div class="card">
     <h2>Galería de Fotos</h2>
     <div class="placeholder">
-      Aquí puedes agregar tus fotos después.<br>
-      (Solo reemplaza este cuadro por imágenes <img src="foto.jpg">)
+      Aquí puedes agregar tus fotos después.<br><br>
+      Solo agrega imágenes así:<br>
+      &lt;img src="foto1.jpg"&gt;
     </div>
   </div>
 
   <div class="card">
     <h2>Ubicación del Templo</h2>
     <div class="placeholder">
-      Aquí puedes pegar el mapa del templo.<br>
-      (Inserta el código iframe de Google Maps aquí)
+      Aquí puedes pegar el mapa del templo (iframe de Google Maps).
     </div>
   </div>
 
   <div class="card">
     <h2>Ubicación del Salón de Eventos</h2>
     <div class="placeholder">
-      Aquí puedes pegar el mapa del salón.<br>
-      (Inserta el código iframe de Google Maps aquí)
+      Aquí puedes pegar el mapa del salón (iframe de Google Maps).
     </div>
   </div>
 
-  <p><strong>28 de agosto de 2026</strong></p>
+  <footer>
+    28 de agosto de 2026
+  </footer>
 
   <script>
     const targetDate = new Date("August 28, 2026 00:00:00").getTime();
